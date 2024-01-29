@@ -17,6 +17,7 @@ public class DataManager : MonoBehaviour
             }
             instance = this;
             DontDestroyOnLoad(gameObject);
+            LoadPlayerData();
         }
     #endregion
     public string playerName;
@@ -29,7 +30,7 @@ public class DataManager : MonoBehaviour
         public string playerName;
         public int highestScore;
     }
-    public void SaveColor()
+    public void SavePlayerData()
     {
         PlayerData data = new PlayerData();
         data.playerName = playerName;
@@ -38,7 +39,7 @@ public class DataManager : MonoBehaviour
 
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
-    public void LoadColor()
+    public void LoadPlayerData()
     {
         string path = Application.persistentDataPath + "/savefile.json";
         if (File.Exists(path))
