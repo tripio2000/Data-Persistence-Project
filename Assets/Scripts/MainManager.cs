@@ -70,6 +70,8 @@ public class MainManager : MonoBehaviour
     {
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
+        //Update highest score
+        if (m_Points > DataManager.instance.highestScore) { DataManager.instance.highestScore = m_Points; }
     }
 
     public void GameOver()
