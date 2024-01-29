@@ -10,11 +10,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Text playerNameText;
     [SerializeField] Animator textBoxAnimator;
 
-    private void Start()
-    {
-       //Get data from DataManager and update UI
-       playerNameText.text = DataManager.instance.playerName;
-    }
     public void StartNewGame()
     {
         //Require playerName
@@ -24,7 +19,7 @@ public class MenuManager : MonoBehaviour
             return; 
         }
         //Update DataManager with new playerName
-        DataManager.instance.playerName = playerNameText.text;
+        DataManager.instance.currentPlayerName = playerNameText.text;
         //Start Game
         SceneManager.LoadScene(1);
     }

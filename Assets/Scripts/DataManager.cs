@@ -20,20 +20,20 @@ public class DataManager : MonoBehaviour
             LoadPlayerData();
         }
     #endregion
-    public string playerName;
+    public string currentPlayerName, bestPlayerName;
     public int highestScore;
 
     #region DATA PERSISTENCE
     [Serializable]
     class PlayerData
     {
-        public string playerName;
+        public string currentPlayerName, bestPlayerName;
         public int highestScore;
     }
     public void SavePlayerData()
     {
         PlayerData data = new PlayerData();
-        data.playerName = playerName;
+        data.bestPlayerName = bestPlayerName;
         data.highestScore = highestScore;
         string json = JsonUtility.ToJson(data);
 
@@ -47,7 +47,7 @@ public class DataManager : MonoBehaviour
             string json = File.ReadAllText(path);
             PlayerData data = JsonUtility.FromJson<PlayerData>(json);
 
-            playerName = data.playerName;
+            bestPlayerName = data.bestPlayerName;
             highestScore = data.highestScore;
         }
     }
